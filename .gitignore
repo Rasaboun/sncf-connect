@@ -1,0 +1,9 @@
+# See https://help.github.com/articles/ignoring-files/ for more about ignoring files.
+
+# dependencies
+client/sncf-client/node_modules
+server/sncf-server/node_modules
+
+# misc
+.DS_Store
+*.pem
