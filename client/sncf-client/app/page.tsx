@@ -63,7 +63,7 @@ export default function Home() {
         </svg>
       </div>
 
-      <NavigationMenuDemo />
+      <NavBar />
 
       <div></div>
     </header>
@@ -77,7 +77,7 @@ export default function Home() {
 
 
 
-export function NavigationMenuDemo() {
+ function NavBar() {
   let accordionvalue = "item-1";
   if (typeof window !== "undefined")
     if (window.innerWidth < 768) {
