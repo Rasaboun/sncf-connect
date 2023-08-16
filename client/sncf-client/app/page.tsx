@@ -403,32 +403,6 @@ export default function Home() {
   );
 }
 
-const ListItem = React.forwardRef<
-  React.ElementRef<"a">,
-  React.ComponentPropsWithoutRef<"a">
->(({ className, title, children, ...props }, ref) => {
-  return (
-    <li>
-      <NavigationMenuLink asChild>
-        <a
-          ref={ref}
-          className={cn(
-            "block select-none space-y-1 rounded-md p-3 leading-none no-underline outline-none transition-colors hover:bg-accent hover:text-accent-foreground focus:bg-accent focus:text-accent-foreground",
-            className
-          )}
-          {...props}
-        >
-          <div className="text-sm font-medium leading-none">{title}</div>
-          <p className="line-clamp-2 text-sm leading-snug text-muted-foreground">
-            {children}
-          </p>
-        </a>
-      </NavigationMenuLink>
-    </li>
-  );
-});
-ListItem.displayName = "ListItem";
-
 const FirstListItem = React.forwardRef<
   React.ElementRef<"a">,
   React.ComponentPropsWithoutRef<"a">
@@ -461,13 +435,13 @@ FirstListItem.displayName = "FirstListItem";
 
 const AllList = ({ list }: { list: ArrayItemList }) => {
   return (
-    <ul>
+    <ul className="flex space-y-3 flex-col">
       {list.map((elem, index) => (
         <li key={elem.title + index}>
           <NavigationMenuLink asChild>
             <a
               href={elem.href}
-              className=" block select-none space-y-1 rounded-md mx-2 leading-none no-underline outline-none transition-colors hover:bg-accent hover:text-accent-foreground focus:bg-accent focus:text-accent-foreground"
+              className=" block select-none rounded-md mx-2 leading-none no-underline outline-none transition-colors hover:bg-accent hover:text-accent-foreground focus:bg-accent focus:text-accent-foreground"
             >
               <p className="hover:text-[#8DE8FE] line-clamp-2 text-sm leading-snug text-muted-foreground text-[#9da0a5]">
                 {elem.title}
