@@ -31,14 +31,14 @@ export default function Home() {
   return (
     <>
     <header className="flex flex-row justify-center md:justify-between items-center bg-[#0C131F]">
-      <div className="text-white absolute md:static rounded-b-lg w-fit h-fit top-9 inset-0 bg-[#0C131F] md:block">
+      <div className="text-white absolute md:static rounded-b-lg w-fit h-fit top-9 inset-0 bg-[#0C131F] md:block md:ml-6">
         <svg
           width="210"
           height="104"
           viewBox="0 0 210 104"
           fill="none"
           xmlns="http://www.w3.org/2000/svg"
-          className="h-6 w-16 md:h-16 md:w-36"
+          className="h-6 w-16 md:h-24 md:w-44"
         >
           <path
             d="M66.38 19.4272H31.4103C22.8902 19.4272 16 26.9332 16 36.1652C16 45.3971 22.8902 52.863 31.4103 52.863H66.38C74.9001 52.863 81.7903 45.3971 81.7903 36.1652C81.7903 26.9332 74.9001 19.4272 66.38 19.4272Z"
@@ -108,7 +108,7 @@ export default function Home() {
           </NavigationMenuTrigger>
 
           <NavigationMenuContent>
-            <div className="flex w-[300px] md:w-[400px] flex-col p-1  ">
+            <div className="flex w-[300px] md:w-[500px] flex-col p-1  ">
               <FirstListItem key="Voyages" title="Voyager" href="/">
                 {"Tout pour voyager"}
               </FirstListItem>
@@ -469,7 +469,7 @@ const AllList = ({ list }: { list: ArrayItemList }) => {
               href={elem.href}
               className=" block select-none space-y-1 rounded-md mx-2 leading-none no-underline outline-none transition-colors hover:bg-accent hover:text-accent-foreground focus:bg-accent focus:text-accent-foreground"
             >
-              <p className="hover:text-[#8DE8FE] line-clamp-2 text-xs leading-snug text-muted-foreground text-[#9da0a5]">
+              <p className="hover:text-[#8DE8FE] line-clamp-2 text-sm leading-snug text-muted-foreground text-[#9da0a5]">
                 {elem.title}
               </p>
             </a>
