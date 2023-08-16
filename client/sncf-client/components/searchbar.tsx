@@ -1,7 +1,7 @@
 export default function SearchBar() {
   return (
     <div className="h-72 bg-[#0C131F]">
-      <h1 className="text-white">Itinéraires</h1>
+      <h1 className="text-white pt-6">Itinéraires</h1>
 	  <div className="flex flex-row max-w-7xl">
       <div className="flex flex-row space-x-1 w-full max-w-4xl relative items-center">
 	  <svg
