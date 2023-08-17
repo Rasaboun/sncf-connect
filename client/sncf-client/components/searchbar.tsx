@@ -1,6 +1,6 @@
 export default function SearchBar() {
   return (
-    <div className="h-72 bg-[#0C131F] pl-1 md:pl-6">
+    <div className="h-72 -z-10 relative bg-[#0C131F] pl-1 md:pl-6 pt-9 md:pt-0">
       <h1 className="text-white pt-6">Itinéraires</h1>
 	  <div className="flex flex-row max-w-7xl">
       <div className="flex flex-row space-x-1 w-full max-w-4xl relative items-center">

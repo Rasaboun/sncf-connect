@@ -30,7 +30,7 @@ const NavigationMenuList = React.forwardRef<
   <NavigationMenuPrimitive.List
     ref={ref}
     className={cn(
-      "group flex flex-1 list-none items-center justify-center",
+      "group flex flex-1 space-x-2 md:space-x-9 list-none items-center justify-center",
       className
     )}
     {...props}
@@ -41,7 +41,7 @@ NavigationMenuList.displayName = NavigationMenuPrimitive.List.displayName
 const NavigationMenuItem = NavigationMenuPrimitive.Item
 
 const navigationMenuTriggerStyle = cva(
-  "group inline-flex h-10 w-max  items-center justify-center rounded-md bg-[#0C131F] px-1 py-2 text-xl font-medium transition-colors  hover:text-[#8DE8FE]  focus:text-[#8DE8FE] focus:outline-none disabled:pointer-events-none disabled:opacity-50 "
+  "group inline-flex h-10 w-max  items-center justify-center rounded-md bg-[#0C131F] px-1 py-2 text-base font-light transition-colors  hover:text-[#8DE8FE]  focus:text-[#8DE8FE] focus:outline-none disabled:pointer-events-none disabled:opacity-50 "
 )
 
 const NavigationMenuTrigger = React.forwardRef<
@@ -85,10 +85,10 @@ const NavigationMenuViewport = React.forwardRef<
   React.ElementRef<typeof NavigationMenuPrimitive.Viewport>,
   React.ComponentPropsWithoutRef<typeof NavigationMenuPrimitive.Viewport>
 >(({ className, ...props }, ref) => (
-  <div className={cn("absolute mx-3  top-full flex justify-center")}>
+  <div className={cn("absolute z-auto  mx-3  top-full flex justify-center")}>
     <NavigationMenuPrimitive.Viewport
       className={cn(
-        " origin-center  relative mt-1.5 md:mt-5 h-[var(--radix-navigation-menu-viewport-height)]	 overflow-hidden rounded-md border border-[#8DE8FE] bg-[#0C131F] text-white shadow-lg data-[state=open]:animate-in data-[state=closed]:animate-out data-[state=closed]:zoom-out-95 data-[state=open]:zoom-in-90 md:w-[var(--radix-navigation-menu-viewport-width)] dark:border-slate-800 dark:bg-slate-950 dark:text-slate-50",
+        "origin-center  relative mt-1.5 md:mt-5 h-[var(--radix-navigation-menu-viewport-height)]	 overflow-hidden rounded-md border border-[#8DE8FE] bg-[#0C131F] text-white shadow-lg data-[state=open]:animate-in data-[state=closed]:animate-out data-[state=closed]:zoom-out-95 data-[state=open]:zoom-in-90 md:w-[var(--radix-navigation-menu-viewport-width)] dark:border-slate-800 dark:bg-slate-950 dark:text-slate-50",
         className
       )}
       ref={ref}
