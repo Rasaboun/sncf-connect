@@ -4,13 +4,13 @@ export default function SearchBar() {
   const [focus,setFocus] = useState(false)
   const [focustwo,setFocustwo] = useState(false)
   const inputfocus = "border-2 border-[#8DE8FE]"
-  const input = "inline-flex items-center flex-row w-1/2 group  bg-[#242b35] rounded-r-lg "
+  const input = "inline-flex items-center flex-row w-full md:w-1/2 group  bg-[#242b35] rounded-r-lg "
   return (
     <div className="h-72 -z-0 relative bg-[#0C131F] pl-1 md:pl-6 pt-9 md:pt-0">
       <h1 className="text-white pt-6">Itinéraires</h1>
-      <div className="flex flex-row max-w-7xl">
-        <div className="flex flex-row space-x-1 w-full max-w-4xl relative items-center">
-          <button className="h-9 w-9 cursor-pointer   absolute m-auto left-0 right-0 ">
+      <div className="flex flex-col md:flex-row items-center space-y-4 md:space-y-0 max-w-7xl">
+        <div className="flex flex-col md:flex-row space-y-2 md:space-y-0 md:space-x-1 w-full max-w-4xl relative items-center">
+          <button className="h-9 w-9 cursor-pointer   absolute inset-y-0 m-auto md:left-0 right-0 ">
             <svg
               width="56"
               height="56"
@@ -25,7 +25,7 @@ export default function SearchBar() {
               />
             </svg>
           </button>
-          <div className={`inline-flex items-center flex-row w-1/2 group  bg-[#242b35] rounded-l-xl ${focustwo ? inputfocus : input }`} onFocus={()=> setFocustwo(true)} onBlur={() => {setFocustwo(false)}}>
+          <div className={`inline-flex items-center flex-row w-full md:w-1/2 group  bg-[#242b35] rounded-xl md:rounded-l-xl ${focustwo ? inputfocus : input }`} onFocus={()=> setFocustwo(true)} onBlur={() => {setFocustwo(false)}}>
             <button className='p-3 rounded-l-xl pl-4 select-none  outline-none  group-hover:bg-[#8DE8FE]/20 cursor-text text-slate-400  whitespace-nowrap'>
               Départ :
             </button>
@@ -37,7 +37,7 @@ export default function SearchBar() {
               required
             />
           </div>
-          <div className={`inline-flex items-center flex-row w-1/2 group  bg-[#242b35] rounded-r-xl ${focus ? inputfocus : input }`} onFocus={()=> setFocus(true)} onBlur={() => {setFocus(false)}}>
+          <div className={`inline-flex items-center flex-row w-full md:w-1/2 group  bg-[#242b35] rounded-xl md:rounded-r-xl ${focus ? inputfocus : input }`} onFocus={()=> setFocus(true)} onBlur={() => {setFocus(false)}}>
             <button className='p-3 pl-4 select-none  outline-none  group-hover:bg-[#8DE8FE]/20 cursor-text text-slate-400  whitespace-nowrap'>
               Arrivée :
             </button>
@@ -50,7 +50,7 @@ export default function SearchBar() {
             />
           </div>
         </div>
-        <button className="flex flex-row space-x-2 rounded-xl bg-[#242b35] items-center p-3 ml-5">
+        <button className="flex flex-row space-x-2 rounded-xl bg-[#242b35] items-center p-3 md:ml-5 w-fit">
           <span className="text-slate-500">
             Départ
            
