@@ -25,7 +25,7 @@ export default function SearchBar() {
               />
             </svg>
           </button>
-          <div className={`inline-flex items-center flex-row w-full md:w-1/2 group  bg-[#242b35] rounded-xl md:rounded-l-xl ${focustwo ? inputfocus : input }`} onFocus={()=> setFocustwo(true)} onBlur={() => {setFocustwo(false)}}>
+          <div className={`inline-flex items-center flex-row w-full md:w-1/2 group  bg-[#242b35] rounded-xl md:rounded-none md:rounded-l-xl ${focustwo ? inputfocus : input }`} onFocus={()=> setFocustwo(true)} onBlur={() => {setFocustwo(false)}}>
             <button className='p-3 rounded-l-xl pl-4 select-none  outline-none  group-hover:bg-[#8DE8FE]/20 cursor-text text-slate-400  whitespace-nowrap'>
               Départ :
             </button>
@@ -37,7 +37,7 @@ export default function SearchBar() {
               required
             />
           </div>
-          <div className={`inline-flex items-center flex-row w-full md:w-1/2 group  bg-[#242b35] rounded-xl md:rounded-r-xl ${focus ? inputfocus : input }`} onFocus={()=> setFocus(true)} onBlur={() => {setFocus(false)}}>
+          <div className={`inline-flex items-center flex-row w-full md:w-1/2 group  bg-[#242b35] rounded-xl md:rounded-none md:rounded-r-xl ${focus ? inputfocus : input }`} onFocus={()=> setFocus(true)} onBlur={() => {setFocus(false)}}>
             <button className='p-3 pl-4 select-none  outline-none  group-hover:bg-[#8DE8FE]/20 cursor-text text-slate-400  whitespace-nowrap'>
               Arrivée :
             </button>

@@ -32,11 +32,11 @@ export default function Home() {
   const [blur, setBlur] = useState(false);
   const hidden =
     "hidden fixed inset-0 top-16 z-40 bg-background/80 backdrop-blur-sm ";
-  const show = "fixed inset-0 top-16 z-40 bg-[#0C131F]/40 	 backdrop-blur-sm ";
+  const show = "fixed inset-0 top-10 md:top-16 z-40 bg-[#0C131F]/40 	 backdrop-blur-sm ";
   return (
     <>
       <header className="grid grid-cols-1 md:grid-cols-3 place-items-center  bg-[#0C131F] w-screen">
-        <div className="text-white absolute md:static rounded-b-lg w-fit h-fit top-7 inset-0 bg-[#0C131F] md:block place-self-start">
+        <div className="text-white absolute md:static rounded-b-lg w-fit h-fit top-7 z-20 inset-0 bg-[#0C131F] md:block place-self-start">
           <svg
             width="204"
             height="39"
