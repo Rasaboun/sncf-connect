@@ -155,7 +155,7 @@ function ScrollCity(props: { place: places[], setInputValue: React.Dispatch<Reac
         <button onClick={()=> props.setInputValue(elem.name)} className="p-4 hover:bg-slate-200" key={elem.name + id}>{elem.name}</button>
       ))}
     </div>
-        <div className="hidden fixed inset-0 top-72 md:top-40 z-40 bg-[#0C131F]/40 	 backdrop-blur-sm "></div>
+        <div className="fixed inset-0 top-72 md:top-40 z-40 bg-[#0C131F]/40 	 backdrop-blur-sm "></div>
     </>
   );
 }
