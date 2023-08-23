@@ -1,16 +1,78 @@
-import { useState } from "react";
+import { ReactEventHandler, useState } from "react";
+
+type places = {
+  id: string;
+  name: string;
+  embedded_type: string;
+};
+
+type placesProps = {
+  place: places[];
+};
+
+const defaultPlace: places[] = [];
+
+const sleep = (ms: number) =>
+  new Promise(resolve => setTimeout(resolve, ms));
 
 export default function SearchBar() {
-  const [focus,setFocus] = useState(false)
-  const [focustwo,setFocustwo] = useState(false)
-  const inputfocus = "border-2 border-[#8DE8FE]"
-  const input = "inline-flex items-center flex-row w-full md:w-1/2 group  bg-[#242b35] rounded-r-lg "
+  const [focus, setFocus] = useState(false);
+  const [place, setPlace] = useState(defaultPlace);
+  const [placesecond, setPlaceSecond] = useState(defaultPlace);
+  const [focustwo, setFocustwo] = useState(false);
+  const [firstinput, setFirstInput] = useState("");
+  const [secondinput, setSecondInput] = useState("");
+
+  const inputfocus = "border-2 border-[#8DE8FE]";
+  const input =
+    "inline-flex items-center border-2 border-transparent hover:border-[#8DE8FE]/20 flex-row w-full md:w-1/2 group  bg-[#242b35] rounded-r-xl ";
+
+  async function handleChange(e: React.ChangeEvent<HTMLInputElement>) {
+    console.log("Change Here")
+    setFirstInput(e.target.value)
+    if (e.target.value) {
+      const res = await fetch(`/autocomplet?q=${e.target.value}`);
+      const data = await res.json();
+      
+      setPlace(data);
+    }
+    else{
+      setPlace([])
+    }
+    
+  }
+
+  async function handleChangeTwo(e: React.ChangeEvent<HTMLInputElement>) {
+    setSecondInput(e.target.value)
+    if (e.target.value) {
+      const res = await fetch(`/autocomplet?q=${e.target.value}`);
+      const data = await res.json();
+      
+      setPlaceSecond(data);
+    }
+    else{
+      console.log("FIN")
+      setPlaceSecond([])
+    }
+   
+  }
+
+  function changeInputValue(){
+    let placeTmp = place;
+    setPlace(placesecond);
+    setPlaceSecond(placeTmp)
+
+    let inputvalueTmp = firstinput;
+    setFirstInput(secondinput);
+    setSecondInput(inputvalueTmp);
+  }
+
   return (
     <div className="h-72 -z-0 relative bg-[#0C131F] pl-1 md:pl-6 pt-9 md:pt-0">
       <h1 className="text-white pt-6">Itinéraires</h1>
       <div className="flex flex-col md:flex-row items-center space-y-4 md:space-y-0 max-w-7xl">
-        <div className="flex flex-col md:flex-row space-y-2 md:space-y-0 md:space-x-1 w-full max-w-4xl relative items-center">
-          <button className="h-9 w-9 cursor-pointer   absolute inset-y-0 m-auto md:left-0 right-0 ">
+        <div className="flex flex-col md:flex-row space-y-2 md:space-y-0 md:space-x-[2px] w-full md:w-3/5		 relative items-center">
+          <button className="h-9 w-9 cursor-pointer   absolute inset-y-0 m-auto md:left-0 right-0 " onClick={changeInputValue}>
             <svg
               width="56"
               height="56"
@@ -25,41 +87,75 @@ export default function SearchBar() {
               />
             </svg>
           </button>
-          <div className={`inline-flex items-center flex-row w-full md:w-1/2 group  bg-[#242b35] rounded-xl md:rounded-none md:rounded-l-xl ${focustwo ? inputfocus : input }`} onFocus={()=> setFocustwo(true)} onBlur={() => {setFocustwo(false)}}>
-            <button className='p-3 rounded-l-xl pl-4 select-none  outline-none  group-hover:bg-[#8DE8FE]/20 cursor-text text-slate-400  whitespace-nowrap'>
+
+          <div
+            className={`inline-flex items-center flex-row w-full md:w-1/2 group  bg-[#242b35] rounded-xl md:rounded-none md:rounded-l-xl ${
+              focus ? inputfocus : input
+            }`}
+            onFocus={() => setFocus(true)}
+            onBlur={
+              async () =>{
+                await sleep(200);
+                setFocus(false)
+              }
+            }
+          >
+            <button className="p-2.5 rounded-l-xl pl-4 select-none  outline-none  group-hover:bg-[#8DE8FE]/20 cursor-text text-slate-400  whitespace-nowrap">
               Départ :
             </button>
             <input
               type="text"
-              className=" bg-[#242b35] outline-none  pl-8 group-hover:bg-[#8DE8FE]/20 text-white   block w-full p-3  group-focus:border-2 "
-             placeholder="D'où partons-nous ?"
-            
+              className="truncate bg-[#242b35] outline-none  pl-8 group-hover:bg-[#8DE8FE]/20 text-white   block w-full p-2.5   "
+              placeholder="D'où partons-nous ?"
+              onChange={handleChange}
+
+              value={firstinput}
               required
             />
           </div>
-          <div className={`inline-flex items-center flex-row w-full md:w-1/2 group  bg-[#242b35] rounded-xl md:rounded-none md:rounded-r-xl ${focus ? inputfocus : input }`} onFocus={()=> setFocus(true)} onBlur={() => {setFocus(false)}}>
-            <button className='p-3 pl-4 select-none  outline-none  group-hover:bg-[#8DE8FE]/20 cursor-text text-slate-400  whitespace-nowrap'>
+          <div
+            className={`inline-flex items-center flex-row w-full md:w-1/2 group test bg-[#242b35] rounded-xl md:rounded-none md:rounded-r-xl ${
+              focustwo ? inputfocus : input
+            }`}
+            onFocus={() => setFocustwo(true)}
+            onBlur={async () => {
+              await sleep(200)
+              setFocustwo(false);
+            }}
+          >
+            <button className="p-2.5 pl-4 select-none  outline-none  group-hover:bg-[#8DE8FE]/20 cursor-text text-slate-400  whitespace-nowrap">
               Arrivée :
             </button>
             <input
               type="text"
-              className=" bg-[#242b35] outline-none  pl-8 group-hover:bg-[#8DE8FE]/20 text-white   block w-full p-3 rounded-r-xl group-focus:border-2 "
-             placeholder="Où allons-nous ?"
-            
+              className=" truncate bg-[#242b35] outline-none  pl-8 group-hover:bg-[#8DE8FE]/20 text-white   block w-full p-2.5 rounded-r-xl "
+              placeholder="Où allons-nous ?"
+              onChange={handleChangeTwo}
+              value={secondinput}
               required
             />
           </div>
+          {focus && <ScrollCity place={place} setInputValue={setFirstInput} ></ScrollCity>}
+          {focustwo && <ScrollCity place={placesecond} setInputValue={setSecondInput}></ScrollCity>}
         </div>
-        <button className="flex flex-row space-x-2 rounded-xl bg-[#242b35] items-center p-3 md:ml-5 w-fit">
-          <span className="text-slate-500">
-            Départ
-           
-          </span>
-          <span className="text-white">
-              Maintenant
-            </span>
+        <button className="flex flex-row space-x-2 rounded-xl bg-[#242b35] items-center p-3 md:ml-5 w-fit" onClick={()=> console.log(firstinput)}>
+          <span className="text-slate-500">Départ</span>
+          <span className="text-white">Maintenant</span>
         </button>
       </div>
     </div>
+  );
+}
+
+function ScrollCity(props: { place: places[], setInputValue: React.Dispatch<React.SetStateAction<string>>}) {
+  return (
+    <>
+    <div  className="absolute w-full bg-white inset-x-0 top-28 max-h-96 overflow-auto  md:top-16 rounded-xl flex flex-col z-50 ">
+      {props.place.map((elem, id) => (
+        <button onClick={()=> props.setInputValue(elem.name)} className="p-4 hover:bg-slate-200" key={elem.name + id}>{elem.name}</button>
+      ))}
+    </div>
+        <div className="hidden fixed inset-0 top-72 md:top-40 z-40 bg-[#0C131F]/40 	 backdrop-blur-sm "></div>
+    </>
   );
 }
