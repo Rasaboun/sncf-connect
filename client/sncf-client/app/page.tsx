@@ -9,6 +9,7 @@ import {
 } from "@/components/ui/accordion";
 
 import SearchBar from "@/components/searchbar";
+import Itineraire from "@/components/itineraire";
 
 import { cn } from "@/lib/utils";
 import {
@@ -18,7 +19,7 @@ import {
   NavigationMenuLink,
   NavigationMenuList,
   NavigationMenuTrigger,
-  navigationMenuTriggerStyle,
+  
 } from "@/components/ui/navigation-menu";
 import { voyage } from "@/src/voyager";
 import { billet } from "@/src/billets";
@@ -28,8 +29,25 @@ type TypeItemList = { title: string; href: string };
 
 type ArrayItemList = TypeItemList[];
 
+import { places } from "@/components/types/type";
+
+const defaultPlace: places = {
+  id: "",
+  name: "",
+  embedded_type : ""
+}
+
+
+
+
+
+
 export default function Home() {
   const [blur, setBlur] = useState(false);
+
+  const [place, setPlace] = useState(defaultPlace);
+  const [placesecond, setPlaceSecond] = useState(defaultPlace);
+
   const hidden =
     "hidden fixed inset-0 top-16 z-40 bg-background/80 backdrop-blur-sm ";
   const show = "fixed inset-0 top-10 md:top-16 z-40 bg-[#0C131F]/40 	 backdrop-blur-sm ";
@@ -77,7 +95,10 @@ export default function Home() {
         <div></div>
       </header>
       <div className={blur ? show : hidden}></div>
-      <SearchBar />
+      <SearchBar place={place} setPlace={setPlace} placesecond={placesecond} setPlaceSecond={setPlaceSecond} />
+      {
+       place ? placesecond ? <Itineraire place={place} placesecond={placesecond}/> : <></> : <></>
+      }
     </>
   );
 }
@@ -94,7 +115,7 @@ function NavBar() {
       <NavigationMenuList>
         <NavigationMenuItem>
           <NavigationMenuTrigger>
-            <div className="flex flex-row items-center space-x-1 ">
+            <div className="flex flex-row items-center space-x-1">
               <svg
                 width="56"
                 height="56"
