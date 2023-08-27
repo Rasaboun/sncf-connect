@@ -112,7 +112,7 @@ export default function SearchBar({
 							</button>
 							<input
 								type="text"
-								className="block w-full truncate   bg-[#242b35] p-2.5   text-white outline-none group-hover:bg-[#8DE8FE]/20   "
+								className="block w-full truncate  rounded-none bg-[#242b35] p-2.5   text-white outline-none group-hover:bg-[#8DE8FE]/20   "
 								placeholder="D'où partons-nous ?"
 								onChange={handleChange}
 								value={firstinput}
@@ -134,7 +134,7 @@ export default function SearchBar({
 							</button>
 							<input
 								type="text"
-								className=" block w-full truncate rounded-r-xl bg-[#242b35]   p-2.5 text-white outline-none group-hover:bg-[#8DE8FE]/20 "
+								className=" block w-full truncate rounded-none bg-[#242b35]   p-2.5 text-white outline-none group-hover:bg-[#8DE8FE]/20 "
 								placeholder="Où allons-nous ?"
 								onChange={handleChangeTwo}
 								value={secondinput}
