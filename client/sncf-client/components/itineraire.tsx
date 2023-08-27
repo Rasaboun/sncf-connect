@@ -1,6 +1,5 @@
 import { places } from "./types/type";
-import { use, useEffect, useState } from "react";
-import { v4 } from "uuid";
+import { useEffect, useState } from "react";
 
 type journey = {
   duration: number;
