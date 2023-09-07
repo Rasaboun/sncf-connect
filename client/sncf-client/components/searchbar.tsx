@@ -238,7 +238,7 @@ function ScrollCity(props: {
 					</button>
 				))}
 			</div>
-			<div className="absolute -inset-x-32 top-32 h-screen z-20 bg-[#0C131F]/40 backdrop-blur-sm "></div>
+			<div className="absolute -left-4 lg:-left-32 top-64 md:top-48 lg:top-32 h-screen w-screen z-20 bg-[#0C131F]/40 backdrop-blur-sm "></div>
 		</>
 	)
 }
