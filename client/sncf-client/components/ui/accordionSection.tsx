@@ -9,17 +9,17 @@ import { cn } from "@/lib/utils"
 const Accordion = AccordionPrimitive.Root
 
 
-const AccordionItem = React.forwardRef<
+const AccordionItemSection = React.forwardRef<
   React.ElementRef<typeof AccordionPrimitive.Item>,
   React.ComponentPropsWithoutRef<typeof AccordionPrimitive.Item>
 >(({ className, ...props }, ref) => (
   <AccordionPrimitive.Item
     ref={ref}
-    className={cn("w-full", className)}
+    className={cn("w-full relative z-0", className)}
     {...props}
   />
 ))
-AccordionItem.displayName = "AccordionItem"
+AccordionItemSection.displayName = "AccordionItem"
 
 const AccordionTrigger = React.forwardRef<
   React.ElementRef<typeof AccordionPrimitive.Trigger>,
@@ -43,7 +43,7 @@ const AccordionTrigger = React.forwardRef<
 ))
 AccordionTrigger.displayName = AccordionPrimitive.Trigger.displayName
 
-const AccordionContent = React.forwardRef<
+const AccordionContentSection = React.forwardRef<
   React.ElementRef<typeof AccordionPrimitive.Content>,
   React.ComponentPropsWithoutRef<typeof AccordionPrimitive.Content>
 >(({ className, children, ...props }, ref) => (
@@ -55,9 +55,9 @@ const AccordionContent = React.forwardRef<
     )}
     {...props}
   >
-    <div className="pb-4 pt-0">{children}</div>
+    <div className=" pb-4 pt-0  flex flex-row">{children}</div>
   </AccordionPrimitive.Content>
 ))
-AccordionContent.displayName = AccordionPrimitive.Content.displayName
+AccordionContentSection.displayName = AccordionPrimitive.Content.displayName
 
-export { Accordion, AccordionItem, AccordionTrigger, AccordionContent }
+export { AccordionContentSection , AccordionItemSection}

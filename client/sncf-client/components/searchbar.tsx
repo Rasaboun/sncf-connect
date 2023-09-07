@@ -74,10 +74,10 @@ export default function SearchBar({
 
 	return (
 		<div className=" bg-[#0C131F] ">
-			<div className="relative -z-0 mx-3 flex flex-col space-y-5 pb-4 pl-1 pt-9 md:pl-28 md:pt-0 ">
+			<div className="relative  mx-3 flex flex-col space-y-5 pb-4 pl-1 pt-9 lg:pl-28 lg:pt-0 ">
 				<h1 className="pt-6 text-2xl font-medium text-white">Itinéraires</h1>
-				<div className="flex max-w-7xl flex-col items-center space-y-4 md:flex-row md:space-y-0">
-					<div className="relative flex w-full flex-col items-center space-y-2 md:w-3/5 md:flex-row		 md:space-x-[2px] md:space-y-0">
+				<div className="flex max-w-7xl flex-col items-center space-y-4 lg:flex-row lg:space-y-0">
+					<div className="relative flex w-full flex-col items-center space-y-2 lg:w-3/5 md:flex-row		 md:space-x-[2px] md:space-y-0">
 						<button
 							className="absolute inset-y-0 right-0   m-auto h-9 w-9 cursor-pointer md:left-0 "
 							onClick={changeInputValue}
@@ -156,7 +156,7 @@ export default function SearchBar({
 							></ScrollCity>
 						)}
 					</div>
-					<button className="flex w-full flex-row items-center space-x-7 rounded-xl bg-[#242b35] p-3 hover:bg-[#8DE8FE]/20 md:ml-5 md:w-fit md:space-x-2">
+					<button className="flex w-full flex-row items-center space-x-7 rounded-xl bg-[#242b35] p-3 hover:bg-[#8DE8FE]/20 lg:ml-5 lg:w-fit lg:space-x-2">
 						<span className="text-slate-500">Départ :</span>
 						<span className="text-white">Maintenant</span>
 					</button>
@@ -224,7 +224,7 @@ function ScrollCity(props: {
 }) {
 	return (
 		<>
-			<div className="absolute inset-x-0 top-28 z-50 flex max-h-96 w-full  flex-col overflow-auto rounded-xl bg-white md:top-16 ">
+			<div className="absolute inset-x-0 top-28 z-30 flex max-h-96 w-full  flex-col overflow-auto rounded-xl bg-white md:top-16 ">
 				{props.place.map((elem, id) => (
 					<button
 						onClick={() => {
@@ -238,7 +238,7 @@ function ScrollCity(props: {
 					</button>
 				))}
 			</div>
-			<div className="fixed inset-0 top-96 z-40 bg-[#0C131F]/40 backdrop-blur-sm 	 md:top-64 "></div>
+			<div className="absolute -inset-x-32 top-32 h-screen z-20 bg-[#0C131F]/40 backdrop-blur-sm "></div>
 		</>
 	)
 }
