@@ -1,12 +1,7 @@
 import './globals.css'
 import type { Metadata } from 'next'
-import localFont from 'next/font/local'
 
-const ah = localFont({
-  src: './AH.woff2',
-  display: 'swap',
-  variable: '--font-ah',
-})
+
 
 export const metadata: Metadata = {
   title: 'RasabounTrip Connect',
@@ -19,7 +14,7 @@ export default function RootLayout({
   children: React.ReactNode
 }) {
   return (
-    <html lang="en">
+    <html lang="fr">
       <body className='bg-[#F3F3F8]'>{children}</body>
     </html>
   )
