@@ -118,7 +118,7 @@ function ItineraireDetail({ journey }: { journey: journey }) {
 			<div className="mx-2 mt-4 flex   rounded-2xl bg-white">
 				<div className="mx-2 w-full flex-col">
 					<div className="min-h-80 m-4  flex flex-col space-y-4">
-						<div className="flex flex-col">
+						<div className="flex flex-col ">
 							<div className="flex flex-row space-x-2 ">
 								<p className="font-medium">
 									{departDate.getHours().toLocaleString(undefined, {
@@ -157,7 +157,7 @@ function ItineraireDetail({ journey }: { journey: journey }) {
 							<p>{journey.nb_transfers.toString() + ' correspondance'}</p>
 						</div>
 						<span className="my-4 h-2 bg-slate-100"></span>
-						<div id="section 0" className="flex flex-col ">
+						<div id="section 0" className="flex flex-col h-3/5 overflow-auto">
 							<div className="w-1 bg-blue-600"></div>
 							<div className="relative flex flex-col">
 								<div
@@ -595,7 +595,7 @@ function ItineraireDetailMobile({ journey }: { journey: journey }) {
 	const departDate = new Date(rawTimeToIso(depart))
 	const arriveDate = new Date(rawTimeToIso(arrive))
 	return (
-		<div className="flex flex-col">
+		<div className="flex flex-col ">
 			<div className="flex flex-col bg-[#0C131F]">
 				<div className="flex flex-row items-center">
 					<p className="m-2 text-2xl font-medium text-white">Détail de l&apos;itinéraire</p>
@@ -633,8 +633,8 @@ function ItineraireDetailMobile({ journey }: { journey: journey }) {
 								</div>
 							</div>
 						</div>
-				<div className="mt-4 flex h-screen bg-[#F3F3F8]">
-					<div className="flex-col w-screen">
+				<div className="mt-4 flex  bg-[#F3F3F8] ">
+					<div className="flex-col w-screen h-screen ">
 						
 						<div className="flex flex-row justify-between space-x-2 p-2 border-b-8 border-white">
 							<div className="inline-flex flex-row space-x-1">
@@ -645,9 +645,9 @@ function ItineraireDetailMobile({ journey }: { journey: journey }) {
 							<p>{journey.nb_transfers.toString() + ' correspondance'}</p>
 						</div>
 						<span className="my-4 h-2 bg-slate-100"></span>
-						<div id="section 0" className="flex flex-col">
+						<div id="section 0" className="flex flex-col h-3/5 overflow-auto">
 							<div className="w-1 bg-blue-600"></div>
-							<div className="relative flex flex-col pt-4">
+							<div className="relative flex flex-col pt-4 ">
 								<div
 									className="absolute left-[72px] h-full w-4"
 									style={{
