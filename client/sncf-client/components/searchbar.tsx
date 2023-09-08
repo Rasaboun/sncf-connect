@@ -77,7 +77,7 @@ export default function SearchBar({
 			<div className="relative  mx-3 flex flex-col space-y-5 pb-4 pl-1 pt-9 lg:pl-28 lg:pt-0 ">
 				<h1 className="pt-6 text-2xl font-medium text-white">Itinéraires</h1>
 				<div className="flex max-w-7xl flex-col items-center space-y-4 lg:flex-row lg:space-y-0">
-					<div className="relative flex w-full flex-col items-center space-y-2 lg:w-3/5 md:flex-row		 md:space-x-[2px] md:space-y-0">
+					<div className="relative flex w-full flex-col items-center space-y-2 md:flex-row md:space-x-[2px]		 md:space-y-0 lg:w-3/5">
 						<button
 							className="absolute inset-y-0 right-0   m-auto h-9 w-9 cursor-pointer md:left-0 "
 							onClick={changeInputValue}
@@ -120,7 +120,7 @@ export default function SearchBar({
 							/>
 						</div>
 						<div
-							className={`test group inline-flex w-full flex-row items-center rounded-xl bg-[#242b35] md:w-1/2 md:rounded-none md:rounded-r-xl ${
+							className={`group inline-flex w-full flex-row items-center rounded-xl bg-[#242b35] md:w-1/2 md:rounded-none md:rounded-r-xl ${
 								focustwo ? inputfocus : input
 							}`}
 							onFocus={() => setFocustwo(true)}
@@ -141,20 +141,27 @@ export default function SearchBar({
 								required
 							/>
 						</div>
-						{focus && (
+						{
 							<ScrollCity
+								focus={focus}
 								place={listPlace}
 								setInputValue={setFirstInput}
 								setPlaceValue={setPlace}
 							></ScrollCity>
-						)}
-						{focustwo && (
+						}
+						{
 							<ScrollCity
+								focus={focustwo}
 								place={listPlaceSecond}
 								setInputValue={setSecondInput}
 								setPlaceValue={setPlaceSecond}
 							></ScrollCity>
-						)}
+						}
+
+						<div
+							data-focus={focus || focustwo}
+							className="absolute -left-4 top-64 z-20 h-screen w-screen backdrop-blur-sm transition-colors duration-500		 ease-in-out data-[focus=false]:scale-0	 data-[focus=false]:bg-[#0C131F]/0  data-[focus=true]:bg-[#0C131F]/40    md:top-48 lg:-left-32  lg:top-32 "
+						></div>
 					</div>
 					<button className="flex w-full flex-row items-center space-x-7 rounded-xl bg-[#242b35] p-3 hover:bg-[#8DE8FE]/20 lg:ml-5 lg:w-fit lg:space-x-2">
 						<span className="text-slate-500">Départ :</span>
@@ -221,10 +228,14 @@ function ScrollCity(props: {
 	place: places[]
 	setInputValue: React.Dispatch<React.SetStateAction<string>>
 	setPlaceValue: React.Dispatch<React.SetStateAction<places>>
+	focus: boolean
 }) {
 	return (
 		<>
-			<div className="absolute inset-x-0 top-28 z-30 flex max-h-96 w-full  flex-col overflow-auto rounded-xl bg-white md:top-16 ">
+			<div
+				data-focus={props.focus}
+				className="absolute  inset-x-0 top-28 z-30 flex max-h-96 w-full flex-col  overflow-auto rounded-xl bg-white data-[focus=false]:hidden md:top-16 "
+			>
 				{props.place.map((elem, id) => (
 					<button
 						onClick={() => {
@@ -238,7 +249,6 @@ function ScrollCity(props: {
 					</button>
 				))}
 			</div>
-			<div className="absolute -left-4 lg:-left-32 top-64 md:top-48 lg:top-32 h-screen w-screen z-20 bg-[#0C131F]/40 backdrop-blur-sm "></div>
 		</>
 	)
 }
