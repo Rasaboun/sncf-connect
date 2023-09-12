@@ -31,7 +31,7 @@ export default function Itineraire({ place, placesecond }: itineraireProps) {
 	}, [place.id, placesecond.id])
 	if (journeys.length > 0) {
 		return (
-			<div className="flex flex-row">
+			<div className="flex flex-row flex-grow mb-8">
 				<ItineraireList
 					selectjourney={selectjourney}
 					journeys={journeys}

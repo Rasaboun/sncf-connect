@@ -23,6 +23,8 @@ import {
 import { voyage } from '@/src/voyager'
 import { billet } from '@/src/billets'
 import { useState } from 'react'
+import Footer from '@/components/footer'
+import { Skeleton } from '@/components/ui/skeleton'
 
 type TypeItemList = { title: string; href: string }
 
@@ -41,9 +43,24 @@ export default function Home() {
 
 	const [place, setPlace] = useState(defaultPlace)
 	const [placesecond, setPlaceSecond] = useState(defaultPlace)
-
+	let itineraire: React.JSX.Element
 	const hidden = 'hidden fixed inset-0 top-16 z-40 bg-background/80 backdrop-blur-sm '
 	const show = 'fixed inset-0 top-10 md:top-16 z-40 bg-[#0C131F]/40 	 backdrop-blur-sm '
+	if (place.id && placesecond.id)
+		itineraire = <Itineraire place={place} placesecond={placesecond} />
+	else {
+		itineraire = (
+			<div className="my-8 flex flex-grow flex-row">
+				<div className="mx-4 flex w-screen flex-col  space-y-4 lg:ml-28 lg:w-2/4">
+					<Skeleton className="mx-8 h-20 rounded-xl" />
+					<Skeleton className="mx-8  h-20 rounded-xl" />
+					<Skeleton className="mx-8  h-20 rounded-xl" />
+					<Skeleton className="mx-8  h-20 rounded-xl" />
+				</div>
+				<Skeleton className="mx-8 hidden h-96 rounded-xl lg:block lg:w-2/4" />
+			</div>
+		)
+	}
 	return (
 		<>
 			<header className="grid w-screen grid-cols-1 place-items-center  bg-[#0C131F] md:grid-cols-3">
@@ -90,7 +107,9 @@ export default function Home() {
 				placesecond={placesecond}
 				setPlaceSecond={setPlaceSecond}
 			/>
-			{place ? placesecond ? <Itineraire place={place} placesecond={placesecond} /> : <></> : <></>}
+			{itineraire}
+
+			<Footer></Footer>
 		</>
 	)
 }
