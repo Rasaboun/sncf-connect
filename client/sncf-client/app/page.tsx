@@ -63,7 +63,7 @@ export default function Home() {
 	}
 	return (
 		<>
-			<header className="grid w-screen grid-cols-1 place-items-center  bg-[#0C131F] md:grid-cols-3">
+			<header className="grid grid-cols-1 place-items-center  bg-[#0C131F] md:grid-cols-3">
 				<div className="absolute inset-0 top-7 z-20 h-fit w-fit place-self-start rounded-b-lg bg-[#0C131F] text-white md:static md:block">
 					<svg
 						width="204"
